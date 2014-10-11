@@ -4,9 +4,9 @@ Version: 1.0.0
 Authors@R: "Gabor Csardi <csardi.gabor@gmail.com> [aut, cre]"
 Description: Create disposable R packages for testing.
     You can create, install and load multiple R packages with a single
-    function call, and then unload, uninstall and destroy it with another
+    function call, and then unload, uninstall and destroy them with another
     function call.
-Depends:
+Imports:
     lazyeval
 License: MIT + file LICENSE
 LazyData: true
