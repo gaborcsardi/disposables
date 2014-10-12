@@ -1,4 +1,4 @@
-Package: disposable
+Package: disposables
 Title: Create Disposable R Packages for Testing
 Version: 1.0.0
 Authors@R: "Gabor Csardi <csardi.gabor@gmail.com> [aut, cre]"

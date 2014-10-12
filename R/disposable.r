@@ -75,7 +75,7 @@ with_libpath <- function(lib_path, ...) {
   sapply(exprs, eval, envir = parent.frame())
 }
 
-#' Create, install and load multiple disposable packages
+#' Create, install, load and attach multiple disposable packages
 #'
 #' @param ... Named expressions.
 #'   A separate package with the given name is created for each.
@@ -89,7 +89,7 @@ with_libpath <- function(lib_path, ...) {
 #' @export
 #' @examples
 #' \donttest{
-#' lib_dir <- load_disposable(
+#' lib_dir <- make_packages(
 #'   foo1 = { f <- function() print("hello!") ; d <- 1:10 },
 #'   foo2 = { f <- function() print("hello again!") ; d <- 11:20 }
 #' )
@@ -102,7 +102,7 @@ with_libpath <- function(lib_path, ...) {
 #' unlink(lib_dir, recursive = TRUE)
 #' }
 
-load_disposable <- function(..., lib_dir = tempfile(),
+make_packages <- function(..., lib_dir = tempfile(),
                           imports = character()) {
   if (!file.exists(lib_dir)) dir.create(lib_dir)
   exprs <- c(as.list(match.call(expand.dots = FALSE)$...))
