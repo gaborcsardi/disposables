@@ -19,7 +19,7 @@ build_pkg <- function(path, pkg_file = NULL) {
   pkg_file
 }
 
-install_tmp_pkg <- function(..., pkg_name, lib_dir, imports = "R6") {
+install_tmp_pkg <- function(..., pkg_name, lib_dir, imports = character()) {
   if (!file.exists(lib_dir)) stop("lib_dir does not exist")
   if (!is.character(pkg_name) || length(pkg_name) != 1) {
     stop("pkg_name is not a string")
@@ -38,12 +38,14 @@ install_tmp_pkg <- function(..., pkg_name, lib_dir, imports = "R6") {
                                     environment = tmp_env))
   pkg_dir <- file.path(src_dir, pkg_name)
 
-  ## Make it installable: remove man, add R6 dependency
+  ## Make it installable: remove man, add imports
   unlink(file.path(pkg_dir, "man"), recursive = TRUE)
-  cat("Imports: ", paste(imports, collapse = ", "), "\n",
-      file = file.path(pkg_dir, "DESCRIPTION"), append = TRUE)
-  cat(paste0("import(", imports, ")"), sep="\n",
-      file = file.path(pkg_dir, "NAMESPACE"), append = TRUE)
+  if (length(imports) != 0) {
+    cat("Imports: ", paste(imports, collapse = ", "), "\n",
+        file = file.path(pkg_dir, "DESCRIPTION"), append = TRUE)
+    cat(paste0("import(", imports, ")"), sep="\n",
+        file = file.path(pkg_dir, "NAMESPACE"), append = TRUE)
+  }
 
   ## Put the code in it, dput is noisy, so we need to redirect it to
   ## temporary file
@@ -70,7 +72,7 @@ with_libpath <- function(lib_path, ...) {
   on.exit(.libPaths(cur_lib_path), add = TRUE)
   .libPaths(c(lib_path, cur_lib_path))
   exprs <- c(as.list(match.call(expand.dots = FALSE)$...))
-   sapply(exprs, eval, envir = parent.frame())
+  sapply(exprs, eval, envir = parent.frame())
 }
 
 #' Create, install and load multiple disposable packages
@@ -82,34 +84,38 @@ with_libpath <- function(lib_path, ...) {
 #'   deleted once the R session is over.
 #' @param imports The 'Imports' field in the DESCRIPTION file,
 #'   the packages to import in each disposable package.
+#' @return The \code{lib_dir}, invisibly.
 #'
 #' @export
-#' @importFrom lazyeval lazy_dots
+#' @examples
+#' \donttest{
+#' lib_dir <- load_disposable(
+#'   foo1 = { f <- function() print("hello!") ; d <- 1:10 },
+#'   foo2 = { f <- function() print("hello again!") ; d <- 11:20 }
+#' )
+#' foo1::f()
+#' foo2::f()
+#' foo1::d
+#' foo2::d
+#' unloadNamespace("foo1")
+#' unloadNamespace("foo2")
+#' unlink(lib_dir, recursive = TRUE)
+#' }
 
 load_disposable <- function(..., lib_dir = tempfile(),
                           imports = character()) {
-  load_disposable_(lazy_dots(...), lib_dir = lib_dir, imports = imports)
-}
-
-#' @rdname load_disposable
-#' @param exprs Named quoted expressions to put in the packages.
-#' @export
-
-load_disposable_ <- function(exprs, lib_dir = tempfile(),
-                             imports = character()) {
-
   if (!file.exists(lib_dir)) dir.create(lib_dir)
+  exprs <- c(as.list(match.call(expand.dots = FALSE)$...))
   for (i in seq_along(exprs)) {
     expr <- exprs[[i]]
     name <- names(exprs)[i]
     install_tmp_pkg(expr, pkg_name = name,
-                    lib_dir = lib_dir, imports = imports)
+                     lib_dir = lib_dir, imports = imports)
     ## Unload everything if an error happens
     on.exit(try(unloadNamespace(name), silent = TRUE), add = TRUE)
     with_libpath(lib_dir, suppressMessages(library(name, quietly = TRUE,
                                                    character.only = TRUE)))
     on.exit()
   }
-  invisible(NULL)
-
+  invisible(lib_dir)
 }

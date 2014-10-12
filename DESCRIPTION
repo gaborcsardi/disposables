@@ -6,7 +6,5 @@ Description: Create disposable R packages for testing.
     You can create, install and load multiple R packages with a single
     function call, and then unload, uninstall and destroy them with another
     function call.
-Imports:
-    lazyeval
 License: MIT + file LICENSE
 LazyData: true
