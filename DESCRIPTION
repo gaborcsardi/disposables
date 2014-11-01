@@ -11,3 +11,4 @@ License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/gaborcsardi/disposables
 BugReports: https://github.com/gaborcsardi/disposables
+Suggests: testthat
