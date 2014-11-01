@@ -19,6 +19,8 @@ build_pkg <- function(path, pkg_file = NULL) {
   pkg_file
 }
 
+#' @importFrom utils package.skeleton
+
 install_tmp_pkg <- function(..., pkg_name, lib_dir, imports = character()) {
   if (!file.exists(lib_dir)) stop("lib_dir does not exist")
   if (!is.character(pkg_name) || length(pkg_name) != 1) {
