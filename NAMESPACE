@@ -2,4 +2,5 @@
 
 export(dispose_packages)
 export(make_packages)
+importFrom(methods,reconcilePropertiesAndPrototype)
 importFrom(utils,package.skeleton)

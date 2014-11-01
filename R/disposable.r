@@ -1,4 +1,7 @@
 
+#' @importFrom methods reconcilePropertiesAndPrototype
+NULL
+
 install_quietly <- TRUE
 
 with_wd <- function(dir, expr) {
