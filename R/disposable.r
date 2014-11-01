@@ -85,7 +85,7 @@ with_libpath <- function(lib_path, ...) {
 #' If a package with the same name as a disposable one, is
 #' loaded, then it will be unloaded. If a package with same name
 #' as a disposable on is installed in \code{lib_dir}, then
-#' it will be overwritten. (\code{lib_dir) is usually a temporary
+#' it will be overwritten. (\code{lib_dir} is usually a temporary
 #' directory, so this is not a big problem.)
 #'
 #' @details

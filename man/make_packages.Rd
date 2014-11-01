@@ -24,7 +24,20 @@ A named list with entries: \itemize{
   }
 }
 \description{
-Create, install, load and attach multiple disposable packages
+If a package with the same name as a disposable one, is
+loaded, then it will be unloaded. If a package with same name
+as a disposable on is installed in \code{lib_dir}, then
+it will be overwritten. (\code{lib_dir} is usually a temporary
+directory, so this is not a big problem.)
+}
+\details{
+Note that if you specify \code{lib_dir} and it points to an
+existing directory, \code{make_package} overwrites the packages
+there. If an error happens during installation or loading of
+the disposables packages, then it will \emph{not} restore the
+original contents of \code{lib_dir}, but it will remove
+all newly installed disposable packages, even the ones
+that were installed cleanly.
 }
 \examples{
 \donttest{
