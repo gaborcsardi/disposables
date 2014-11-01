@@ -17,14 +17,18 @@ deleted once the R session is over.}
 the packages to import in each disposable package.}
 }
 \value{
-The \code{lib_dir}, invisibly.
+A named list with entries: \itemize{
+    \item \code{lib_dir} The directory in which the packages are
+      installed.
+    \item \code{package} The named of the packages.
+  }
 }
 \description{
 Create, install, load and attach multiple disposable packages
 }
 \examples{
 \donttest{
-lib_dir <- make_packages(
+pkg <- make_packages(
   foo1 = { f <- function() print("hello!") ; d <- 1:10 },
   foo2 = { f <- function() print("hello again!") ; d <- 11:20 }
 )
@@ -32,9 +36,10 @@ foo1::f()
 foo2::f()
 foo1::d
 foo2::d
-unloadNamespace("foo1")
-unloadNamespace("foo2")
-unlink(lib_dir, recursive = TRUE)
+dispose_packages(pkg)
 }
+}
+\seealso{
+\code{\link{dispose_packages}}
 }
 
