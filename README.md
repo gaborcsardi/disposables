@@ -3,8 +3,9 @@
 
 # Disposable R packages, for testing purposes
 
-[![Linux Build Status](https://travis-ci.org/gaborcsardi/disposables.png?branch=master)](https://travis-ci.org/gaborcsardi/disposables)
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/github/gaborcsardi/disposables)](https://ci.appveyor.com/project/gaborcsardi/disposables)
+[![Linux Build Status](https://travis-ci.org/gaborcsardi/disposables.svg?branch=master)](https://travis-ci.org/gaborcsardi/disposables)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/github/gaborcsardi/disposables?svg=true)](https://ci.appveyor.com/project/gaborcsardi/disposables)
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/disposables)](http://cran.r-project.org/web/packages/disposables/index.html)
 
 ## Features
 
