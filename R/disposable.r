@@ -67,6 +67,14 @@ install_tmp_pkg <- function(..., pkg_name, lib_dir, imports = character()) {
   ## Build it
   pkg_file <- build_pkg(pkg_dir)
 
+  ## Need to unset R_TESTS. This is set during R CMD check
+  ## and it messes up things
+  if ("R_TESTS" %in% names(Sys.getenv())) {
+    R_TESTS <- Sys.getenv("R_TESTS")
+    on.exit(Sys.setenv(R_TESTS = R_TESTS), add = TRUE)
+    Sys.unsetenv("R_TESTS")
+  }
+
   ## Install it into the supplied lib_dir
   install.packages(pkg_file, lib = lib_dir, repos = NULL, type = "source",
                    quiet = install_quietly)
