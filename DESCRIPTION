@@ -1,6 +1,6 @@
 Package: disposables
 Title: Create Disposable R Packages for Testing
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: "Gabor Csardi <csardi.gabor@gmail.com> [aut, cre]"
 Description: Create disposable R packages for testing.
     You can create, install and load multiple R packages with a single
