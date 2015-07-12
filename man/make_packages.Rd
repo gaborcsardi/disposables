@@ -40,8 +40,9 @@ original contents of \code{lib_dir}, but it will remove
 all newly installed disposable packages, even the ones
 that were installed cleanly.
 }
-\examples{
-\donttest{
+\section{Examples}{
+
+\preformatted{
 pkg <- make_packages(
   foo1 = { f <- function() print("hello!") ; d <- 1:10 },
   foo2 = { f <- function() print("hello again!") ; d <- 11:20 }

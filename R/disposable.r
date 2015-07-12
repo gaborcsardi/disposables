@@ -120,10 +120,8 @@ with_libpath <- function(lib_path, ...) {
 #'     \item \code{package} The named of the packages.
 #'   }
 #'
-#' @export
-#' @seealso \code{\link{dispose_packages}}
-#' @examples
-#' \donttest{
+#' @section Examples:
+#' \preformatted{
 #' pkg <- make_packages(
 #'   foo1 = { f <- function() print("hello!") ; d <- 1:10 },
 #'   foo2 = { f <- function() print("hello again!") ; d <- 11:20 }
@@ -134,6 +132,9 @@ with_libpath <- function(lib_path, ...) {
 #' foo2::d
 #' dispose_packages(pkg)
 #' }
+#' 
+#' @export
+#' @seealso \code{\link{dispose_packages}}
 
 make_packages <- function(..., lib_dir = tempfile(),
                           imports = character()) {
@@ -174,9 +175,8 @@ make_packages <- function(..., lib_dir = tempfile(),
 #'   this should be \code{TRUE} as well.
 #' @param delete_lib_dir Whether to delete the the whole \code{lib_dir}.
 #'
-#' @export
-#' @examples
-#' \donttest{
+#' @section Examples:
+#' \preformatted{
 #' pkg <- make_packages(
 #'   foo1 = { f <- function() print("hello!") ; d <- 1:10 },
 #'   foo2 = { f <- function() print("hello again!") ; d <- 11:20 }
@@ -189,22 +189,24 @@ make_packages <- function(..., lib_dir = tempfile(),
 #'
 #' ## Unattach only
 #' dispose_packages(pkg, unload = FALSE, delete = FALSE)
-#' "package:foo1" %in% search()
-#' "foo1" %in% loadedNamespaces()
+#' "package:foo1" \%in\% search()
+#' "foo1" \%in\% loadedNamespaces()
 #' dir(pkg$lib_dir)
 #'
 #' ## Unload
 #' dispose_packages(pkg, delete = FALSE)
-#' "package:foo1" %in% search()
-#' "foo1" %in% loadedNamespaces()
+#' "package:foo1" \%in\% search()
+#' "foo1" \%in\% loadedNamespaces()
 #' dir(pkg$lib_dir)
 #'
 #' ## Delete completely
 #' dispose_packages(pkg)
-#' "package:foo1" %in% search()
-#' "foo1" %in% loadedNamespaces()
+#' "package:foo1" \%in\% search()
+#' "foo1" \%in\% loadedNamespaces()
 #' file.exists(pkg$lib_dir)
 #' }
+#'
+#' @export
 
 dispose_packages <- function(packages, unattach = TRUE, unload = unattach,
                              delete = TRUE, delete_lib_dir = delete) {
