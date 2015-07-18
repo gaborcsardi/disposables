@@ -2,8 +2,6 @@
 #' @importFrom methods reconcilePropertiesAndPrototype
 NULL
 
-install_quietly <- TRUE
-
 with_wd <- function(dir, expr) {
   wd <- getwd()
   on.exit(setwd(wd))
@@ -25,6 +23,7 @@ build_pkg <- function(path, pkg_file = NULL) {
 }
 
 #' @importFrom utils package.skeleton install.packages
+#' @importFrom pkgconfig get_config
 
 install_tmp_pkg <- function(..., pkg_name, lib_dir, imports = character()) {
   if (!file.exists(lib_dir)) stop("lib_dir does not exist")
@@ -76,6 +75,8 @@ install_tmp_pkg <- function(..., pkg_name, lib_dir, imports = character()) {
     on.exit(Sys.setenv(R_TESTS = R_TESTS), add = TRUE)
     Sys.unsetenv("R_TESTS")
   }
+
+  install_quietly <- get_config("disposables::install_quietly", TRUE)
 
   ## Install it into the supplied lib_dir
   install.packages(pkg_file, lib = lib_dir, repos = NULL, type = "source",

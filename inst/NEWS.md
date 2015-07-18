@@ -1,4 +1,8 @@
 
+# 1.0.2
+
+* Use the `pkgconfig` package for configuration.
+
 # 1.0.1
 
 * Fix spurious `R CMD check` warnings and notes.

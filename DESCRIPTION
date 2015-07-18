@@ -1,6 +1,6 @@
 Package: disposables
 Title: Create Disposable R Packages for Testing
-Version: 1.0.1
+Version: 1.0.2
 Author: Gabor Csardi
 Maintainer: Gabor Csardi <csardi.gabor@gmail.com>
 Description: Create disposable R packages for testing.
@@ -13,7 +13,8 @@ LazyData: true
 URL: https://github.com/gaborcsardi/disposables
 BugReports: https://github.com/gaborcsardi/disposables/issues
 Imports:
-    utils
+    utils,
+    pkgconfig (>= 2.0.0)
 Suggests:
     testthat
 Depends:

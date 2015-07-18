@@ -3,6 +3,7 @@
 export(dispose_packages)
 export(make_packages)
 importFrom(methods,reconcilePropertiesAndPrototype)
+importFrom(pkgconfig,get_config)
 importFrom(utils,install.packages)
 importFrom(utils,package.skeleton)
 importFrom(utils,tar)
