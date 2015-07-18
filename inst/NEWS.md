@@ -1,7 +1,9 @@
 
 # 1.0.2
 
-* Use the `pkgconfig` package for configuration.
+* `make_packages()` now has a `quiet` argument, set to `FALSE`
+  to see the installation of disposable packages. This is mainly
+  useful for debugging.
 
 # 1.0.1
 
