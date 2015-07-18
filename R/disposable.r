@@ -23,9 +23,9 @@ build_pkg <- function(path, pkg_file = NULL) {
 }
 
 #' @importFrom utils package.skeleton install.packages
-#' @importFrom pkgconfig get_config
 
-install_tmp_pkg <- function(..., pkg_name, lib_dir, imports = character()) {
+install_tmp_pkg <- function(..., pkg_name, lib_dir,
+                            imports = character(), quiet = TRUE) {
   if (!file.exists(lib_dir)) stop("lib_dir does not exist")
   if (!is.character(pkg_name) || length(pkg_name) != 1) {
     stop("pkg_name is not a string")
@@ -76,11 +76,9 @@ install_tmp_pkg <- function(..., pkg_name, lib_dir, imports = character()) {
     Sys.unsetenv("R_TESTS")
   }
 
-  install_quietly <- get_config("disposables::install_quietly", TRUE)
-
   ## Install it into the supplied lib_dir
   install.packages(pkg_file, lib = lib_dir, repos = NULL, type = "source",
-                   quiet = install_quietly)
+                   quiet = quiet)
 }
 
 with_libpath <- function(lib_path, ...) {
@@ -115,6 +113,8 @@ with_libpath <- function(lib_path, ...) {
 #'   deleted once the R session is over.
 #' @param imports The 'Imports' field in the DESCRIPTION file,
 #'   the packages to import in each disposable package.
+#' @param quiet Whether to show the installation process of
+#'   disposable packages.
 #' @return A named list with entries: \itemize{
 #'     \item \code{lib_dir} The directory in which the packages are
 #'       installed.
@@ -138,7 +138,7 @@ with_libpath <- function(lib_path, ...) {
 #' @seealso \code{\link{dispose_packages}}
 
 make_packages <- function(..., lib_dir = tempfile(),
-                          imports = character()) {
+                          imports = character(), quiet = TRUE) {
 
   remove_lib_dir <- !file.exists(lib_dir)
   if (remove_lib_dir) dir.create(lib_dir)
@@ -156,7 +156,7 @@ make_packages <- function(..., lib_dir = tempfile(),
     expr <- exprs[[i]]
     name <- names(exprs)[i]
     install_tmp_pkg(expr, pkg_name = name,
-                     lib_dir = lib_dir, imports = imports)
+                     lib_dir = lib_dir, imports = imports, quiet = quiet)
     with_libpath(lib_dir, suppressMessages(library(name, quietly = TRUE,
                                                    character.only = TRUE)))
   }

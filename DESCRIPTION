@@ -13,8 +13,7 @@ LazyData: true
 URL: https://github.com/gaborcsardi/disposables
 BugReports: https://github.com/gaborcsardi/disposables/issues
 Imports:
-    utils,
-    pkgconfig (>= 2.0.0)
+    utils
 Suggests:
     testthat
 Depends:

@@ -4,7 +4,8 @@
 \alias{make_packages}
 \title{Create, install, load and attach multiple disposable packages}
 \usage{
-make_packages(..., lib_dir = tempfile(), imports = character())
+make_packages(..., lib_dir = tempfile(), imports = character(),
+  quiet = TRUE)
 }
 \arguments{
 \item{...}{Named expressions.
@@ -16,6 +17,9 @@ deleted once the R session is over.}
 
 \item{imports}{The 'Imports' field in the DESCRIPTION file,
 the packages to import in each disposable package.}
+
+\item{quiet}{Whether to show the installation process of
+disposable packages.}
 }
 \value{
 A named list with entries: \itemize{
