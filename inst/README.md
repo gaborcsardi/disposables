@@ -145,4 +145,4 @@ test_that("inheritance works across packages", {
 
 ## License
 
-MIT
+MIT @ Gábor Csárdi
