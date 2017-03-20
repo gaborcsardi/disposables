@@ -61,7 +61,7 @@ install_tmp_pkg <- function(..., pkg_name, lib_dir,
   code_file <- file.path(pkg_dir, "R", "code.R")
   tmp_file <- tempfile()
   on.exit(try(unlink(tmp_file), silent = TRUE), add = TRUE)
-  sapply(exprs, function(x)
+  lapply(exprs, function(x)
          cat(deparse(dput(x, file = tmp_file)),
              file = code_file, append = TRUE, "\n", sep="\n"))
 
