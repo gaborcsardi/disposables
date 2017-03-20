@@ -112,7 +112,9 @@ with_libpath <- function(lib_path, ...) {
 #'   Defaults to a temporary directory that is
 #'   deleted once the R session is over.
 #' @param imports The 'Imports' field in the DESCRIPTION file,
-#'   the packages to import in each disposable package.
+#'   the packages to import in each disposable package. It can be a
+#'   character vector, which applies to all packages, or a list of
+#'   character vectors, one for each package.
 #' @param quiet Whether to show the installation process of
 #'   disposable packages.
 #' @return A named list with entries: \itemize{
@@ -133,7 +135,7 @@ with_libpath <- function(lib_path, ...) {
 #' foo2::d
 #' dispose_packages(pkg)
 #' }
-#' 
+#'
 #' @export
 #' @seealso \code{\link{dispose_packages}}
 
@@ -146,6 +148,14 @@ make_packages <- function(..., lib_dir = tempfile(),
 
   pkgs <- list(lib_dir = lib_dir, packages = names(exprs))
 
+  ## Check imports
+  if (is.list(imports) && length(imports) != length(pkgs)) {
+    stop("If 'imports' is a list, it should have the same length as ",
+         "the number of packages, specifying imports for each package ",
+         "individually. If you want the same imports for all disposable ",
+         "packages, then 'imports' should be a character vector")
+  }
+
   ## Start clean
   dispose_packages(pkgs, delete_lib_dir = FALSE)
 
@@ -155,8 +165,16 @@ make_packages <- function(..., lib_dir = tempfile(),
   for (i in seq_along(exprs)) {
     expr <- exprs[[i]]
     name <- names(exprs)[i]
+
+    if (is.list(imports)) {
+      pkg_imports <- imports[[i]]
+
+    } else {
+      pkg_imports <- imports
+    }
+
     install_tmp_pkg(expr, pkg_name = name,
-                     lib_dir = lib_dir, imports = imports, quiet = quiet)
+                     lib_dir = lib_dir, imports = pkg_imports, quiet = quiet)
     with_libpath(lib_dir, suppressMessages(library(name, quietly = TRUE,
                                                    character.only = TRUE)))
   }
