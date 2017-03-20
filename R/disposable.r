@@ -138,6 +138,8 @@ with_libpath <- function(lib_path, ...) {
 #'
 #' @export
 #' @seealso \code{\link{dispose_packages}}
+#' @examples
+#' ## See above and also in the README: https://r-pkg.org/pkg/disposables
 
 make_packages <- function(..., lib_dir = tempfile(),
                           imports = character(), quiet = TRUE) {

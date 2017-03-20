@@ -61,6 +61,9 @@ dispose_packages(pkg)
 }
 }
 
+\examples{
+## See above and also in the README: https://r-pkg.org/pkg/disposables
+}
 \seealso{
 \code{\link{dispose_packages}}
 }
