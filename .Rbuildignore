@@ -2,4 +2,4 @@
 ^Makefile$
 ^appveyor.yml$
 ^.travis.yml$
-^README.md$
+^README.markdown$
