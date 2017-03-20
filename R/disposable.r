@@ -78,7 +78,7 @@ install_tmp_pkg <- function(..., pkg_name, lib_dir,
 
   ## Install it into the supplied lib_dir
   install.packages(pkg_file, lib = lib_dir, repos = NULL, type = "source",
-                   quiet = quiet)
+                   quiet = quiet, INSTALL_opts = "--no-test-load")
 }
 
 with_libpath <- function(lib_path, ...) {
