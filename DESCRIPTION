@@ -15,6 +15,7 @@ BugReports: https://github.com/gaborcsardi/disposables/issues
 Imports:
     utils
 Suggests:
+    covr,
     testthat
 Depends:
     methods
