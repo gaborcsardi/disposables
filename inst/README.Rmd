@@ -10,7 +10,9 @@ knitr::opts_chunk$set(
 
 [![Linux Build Status](https://travis-ci.org/gaborcsardi/disposables.svg?branch=master)](https://travis-ci.org/gaborcsardi/disposables)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/github/gaborcsardi/disposables?svg=true)](https://ci.appveyor.com/project/gaborcsardi/disposables)
-[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/disposables)](http://cran.r-project.org/web/packages/disposables/index.html)
+[![](http://www.r-pkg.org/badges/version/disposables)](http://www.r-pkg.org/pkg/disposables)
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/disposables)](http://www.r-pkg.org/pkg/disposables)
+[![Coverage Status](https://img.shields.io/codecov/c/github/gaborcsardi/disposables/master.svg)](https://codecov.io/github/gaborcsardi/disposables?branch=master)
 
 ## Features
 
