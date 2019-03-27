@@ -30,10 +30,10 @@ particular,
 
 ## Installation
 
-You can install this R package from Github:
+Install the package from CRAN:
 
 ```{r eval = FALSE}
-devtools::install_github("gaborcsardi/disposables")
+install.packages("disposables")
 ```
 
 ## Usage

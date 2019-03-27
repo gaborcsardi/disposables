@@ -25,11 +25,11 @@ particular,
 
 ## Installation
 
-You can install this R package from Github:
+Install the package from CRAN:
 
 
 ```r
-devtools::install_github("gaborcsardi/disposables")
+install.packages("disposables")
 ```
 
 ## Usage
@@ -40,13 +40,6 @@ expressions, the names will be used as package names.
 
 ```r
 library(disposables)
-```
-
-```
-#> Loading required package: methods
-```
-
-```r
 pkgs <- make_packages(
   foo1 = { f <- function() print("hello!") ; d <- 1:10 },
   foo2 = { f <- function() print("hello again!") ; d <- 11:20 }
