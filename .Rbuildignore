@@ -3,3 +3,5 @@
 ^appveyor.yml$
 ^.travis.yml$
 ^README.markdown$
+^\.github$
+^codecov\.yml$

@@ -8,11 +8,12 @@ knitr::opts_chunk$set(
 
 # Disposable R packages, for testing purposes
 
-[![Linux Build Status](https://travis-ci.org/gaborcsardi/disposables.svg?branch=master)](https://travis-ci.org/gaborcsardi/disposables)
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/github/gaborcsardi/disposables?svg=true)](https://ci.appveyor.com/project/gaborcsardi/disposables)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/gaborcsardi/disposables/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/gaborcsardi/disposables/actions/workflows/R-CMD-check.yaml)
 [![](http://www.r-pkg.org/badges/version/disposables)](http://www.r-pkg.org/pkg/disposables)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/disposables)](http://www.r-pkg.org/pkg/disposables)
-[![Coverage Status](https://img.shields.io/codecov/c/github/gaborcsardi/disposables/master.svg)](https://codecov.io/github/gaborcsardi/disposables?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/gaborcsardi/disposables/branch/main/graph/badge.svg)](https://app.codecov.io/gh/gaborcsardi/disposables?branch=main)
+<!-- badges: end -->
 
 ## Features
 
