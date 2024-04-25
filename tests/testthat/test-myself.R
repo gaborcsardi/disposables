@@ -11,8 +11,8 @@ test_that("We can create and load them", {
 
   expect_output(foo1::f(), "hello!", fixed = TRUE)
   expect_output(foo2::f(), "hello again!", fixed = TRUE)
-  expect_equal(foo1::d, 1:10)
-  expect_equal(foo2::d, 11:20)
+  expect_equal(foo1:::d, 1:10)
+  expect_equal(foo2:::d, 11:20)
 
 })
 
@@ -79,7 +79,7 @@ test_that("We unload a package if it is already loaded", {
 
   expect_output(foo1::f(), "hello two!", fixed = TRUE)
   expect_output(foo2::f(), "hello two again!", fixed = TRUE)
-  expect_equal(foo1::d, 1:100)
-  expect_equal(foo2::d, 11:200)
+  expect_equal(foo1:::d, 1:100)
+  expect_equal(foo2:::d, 11:200)
 
 })
