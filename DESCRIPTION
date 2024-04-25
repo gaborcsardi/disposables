@@ -9,7 +9,6 @@ Description: Create disposable R packages for testing.
     function call. This is handy when testing how some R code or an R package
     behaves with respect to other packages.
 License: MIT + file LICENSE
-LazyData: true
 URL: https://github.com/gaborcsardi/disposables
 BugReports: https://github.com/gaborcsardi/disposables/issues
 Imports:
